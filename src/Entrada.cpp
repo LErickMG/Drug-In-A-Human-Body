@@ -60,4 +60,12 @@ class Entrada{
 			archivo.close();
 		}
 
+		vector<double> getTiempos(){
+			return tiempos;
+		}
+
+		vector<double> getConcentraciones(){
+			return concentraciones;
+		}
+
 };

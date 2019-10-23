@@ -12,6 +12,7 @@ class TestEntrada{
 			string direccionFalsa = "archivoNoExistente.txt";
 			string direccionReal = "data/out.txt";
 			string datosIncorrectos = "data/dataTest.txt";
+			string verificarDatos = "data/correcto.txt";
 
 			Entrada entrada;
 
@@ -42,6 +43,23 @@ class TestEntrada{
 			if(datos.procesarDatos()){
 				return fallo;
 			}	
+
+			Entrada datosVerificados;
+			//Prueba para verificar que los datos cargados son correctos
+			if(!datosVerificados.obtenerArchivo(verificarDatos)){
+				return fallo;
+			}
+			if(!datosVerificados.procesarDatos()){
+				return fallo;
+			}
+			int verificadorX[] = {1, 2, 3, 4, 5};
+			int verificadorY[] = {6, 7, 8, 9, 10};
+			vector<double> X = datosVerificados.getTiempos();
+			vector<double> Y = datosVerificados.getConcentraciones();
+			for(int i = 0; i < 5; i++){
+				if(verificadorX[i] != X[i] || verificadorY[i] != Y[i])
+					return fallo;
+			}
 
 			return exito;
 
