@@ -1,11 +1,13 @@
 #include <bits/stdc++.h>
 #include <bits/stdc++.h>
 #include "Entrada.cpp"
+#include "DistribucionExponencial.cpp"
 
 using namespace std;
 
 int main(){
 
+	//Procesar entrada
 	Entrada datosEntrada;
 
 	string direccionArchivo;
@@ -18,6 +20,13 @@ int main(){
 	if(!datosEntrada.procesarDatos()){
 		return 0;
 	}
+
+	//Calcular distribucion.
+	DistribucionExponencial distribucion(datosEntrada);
+	distribucion.calculaMedia();
+	distribucion.calculaLambda();
+	cout << distribucion.getMedia() << endl;
+	cout << distribucion.getLambda() << endl; 
 
 	return 0;
 }
