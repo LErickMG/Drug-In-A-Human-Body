@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-#include <bits/stdc++.h>
 #include "Entrada.cpp"
 #include "DistribucionExponencial.cpp"
+#include "Graficador.cpp"
 
 using namespace std;
 
@@ -23,10 +23,17 @@ int main(){
 
 	//Calcular distribucion.
 	DistribucionExponencial distribucion(datosEntrada);
+	if(!distribucion.verificador()){
+		return 0;
+	}
 	distribucion.calculaMedia();
 	distribucion.calculaLambda();
-	cout << distribucion.getMedia() << endl;
-	cout << distribucion.getLambda() << endl; 
+	distribucion.generarDistribucion();
+	cout << distribucion.getLambda() << endl;
+	 
+	//Graficamos nuestros datos resultantes
+	Graficador graficadorDatos(distribucion);
+	graficadorDatos.grafica();
 
 	return 0;
 }

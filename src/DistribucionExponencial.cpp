@@ -21,7 +21,7 @@ class DistribucionExponencial{
 			media = -1;
 		}
 
-		DistribucionExponencial(Entrada datos){
+		DistribucionExponencial(Entrada & datos){
 
 			lambda = -1;
 			media = -1;
@@ -64,6 +64,10 @@ class DistribucionExponencial{
 			return true;
 		}
 
+		bool verificador(){
+			return verificaDatos(datosReales);
+		}
+
 		double getMedia(){
 			return media;
 		}
@@ -80,9 +84,31 @@ class DistribucionExponencial{
 
 			vector<double> datos;
 			for(int i = 0; i < datosReales.size() ; i++){
-				datos[i] = datosReales[i].second;
+				datos.push_back(datosReales[i].second);
 			}
 			media = mediaVector(datos);
 		}
 
+		void generarDistribucion(){
+			
+			double tiempoMaximo = datosReales.back().first;
+			double segmento = tiempoMaximo/100000.0;
+
+			double tiempo = 0.01;
+			while(tiempo < tiempoMaximo){
+
+				double cantidad = lambda*exp((-lambda)*tiempo);
+				distribucion.push_back( make_pair(tiempo, cantidad));
+				tiempo += segmento;
+			}
+			cout << "Generamos correctamente la distribucion aproximada a los datos." << endl;
+		}		
+
+		vector< pair<double,double> > getDatosReales(){
+			return datosReales;
+		}
+
+		vector< pair<double,double> > getDistribucion(){
+			return distribucion;
+		}
 };

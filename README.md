@@ -1,6 +1,6 @@
 # Project Title
 
-One Paragraph of project description goes here
+
 
 ## Getting Started
 
@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Necesitas tener instalado python
 
 ```
 Give examples
@@ -34,7 +34,9 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+$make compile
+$make run 
+$make tes
 
 ### Break down into end to end tests
 
